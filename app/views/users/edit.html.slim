@@ -1,0 +1,15 @@
+h1 Edit User
+
+= simple_form_for(:user, url: @user.self_path, method: :patch) do |f|
+  = f.input(:email)
+
+  - @user.with_admin_permissions do
+    h4 Admin section
+    = f.input(:admin, as: :boolean)
+    = f.input(:deleted, as: :boolean)
+
+  - @user.on_myself do
+    h4 Personal section
+    = f.input(:deleted, as: :boolean)
+
+  = f.submit

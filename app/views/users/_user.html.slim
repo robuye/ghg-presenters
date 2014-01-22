@@ -1,0 +1,22 @@
+- present(user) do |user|
+  tr
+    td = user.email
+    td = user.created_at.to_date
+    td = user.deleted?
+    td = user.admin?
+    td = user.show_link
+
+  - user.with_admin_permissions do
+    tr
+      td Admin Actions
+      td
+      td
+      td = user.edit_link
+      td = user.delete_link
+  - user.on_myself do
+    tr
+      td Personal Actions
+      td
+      td = user.edit_link
+      td
+      td

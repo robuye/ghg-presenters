@@ -9,3 +9,6 @@ nav.top-bar[data-topbar]
   .top-bar-section
     ul
       == render 'layouts/navigation_links'
+    ul.right
+      li = link_to("ADMIN", '#') if current_user.try(:admin?)
+      li = link_to("DELETED", '#') if current_user.try(:deleted?)
